@@ -1,8 +1,6 @@
 package nowcoder;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class HuaWei {
 
@@ -173,6 +171,119 @@ public class HuaWei {
             System.out.println(key + " " + map.get(key));
         }
     }
+
+    /**
+     * 提取不重复的整数
+     */
+    public void HJ9(){
+//import java.util.Scanner;
+//import java.util.LinkedHashSet;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.Collections;
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        LinkedHashSet<Integer> set = new LinkedHashSet<>();/*顺序 不重复 的 Set*/
+        String reverseString = new StringBuffer(input).reverse().toString();/*倒序*/
+        for(int i = 0; i < reverseString.length(); i++){
+            set.add(Integer.valueOf(reverseString.substring(i, i + 1)));/*去重复*/
+        }
+        List<Integer> list = new ArrayList<>(set);
+        for(Integer num : list){
+            System.out.print(num);
+        }
+    }
+
+    /**
+     * 字符个数统计
+     */
+    private void HJ10(){
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+        for(int i = 0; i < input.length(); i++){
+            set.add(input.substring(i, i + 1));
+        }
+        System.out.print(set.size());
+    }
+
+    /**
+     * 数字颠倒
+     */
+    private void HJ11(){
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        String reverse = new StringBuffer(input).reverse().toString();
+        System.out.print(reverse);
+    }
+
+    /**
+     * 字符串反转
+     */
+    private void HJ12(){
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        String reverse = new StringBuffer(input).reverse().toString();
+        System.out.print(reverse);
+    }
+
+    /**
+     * 句子逆序
+     */
+    private void HJ13(){
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        String[] stringArray = input.split(" ");
+        for(int i = stringArray.length - 1; i >= 0; i--){
+            System.out.print(stringArray[i] + " ");
+        }
+    }
+
+    /**
+     * 字符串排序
+     */
+    public void HJ14(){
+        Scanner in = new Scanner(System.in);
+        int lineNum = in.nextInt();
+        in.nextLine(); /* 消耗掉换行符 */
+        ArrayList<String> stringList = new ArrayList<>();
+        for(int i = 0; i < lineNum; i++){
+            stringList.add(in.nextLine());
+        }
+        Collections.sort(stringList);
+        for(int i = 0; i < stringList.size(); i++){
+            System.out.println(stringList.get(i));
+        }
+    }
+
+    /**
+     * 求int型正整数在内存中存储时1的个数
+     */
+    public void HJ15(){
+        Scanner in = new Scanner(System.in);
+        int input = in.nextInt();
+        int num = 0;
+        String binary = Integer.toBinaryString(input);/* 将整数转为二进制 */
+        for(int i = 0; i < binary.length(); i++){
+            if(binary.substring(i, i + 1).equals("1")){
+                num++;
+            }
+            //第二种判断方法
+//            if(binary.charAt(i) == '1'){
+//                num++;
+//            }
+        }
+        System.out.print(num);
+    }
+
+
+
+
+
+
+
+
+
 
 
 
