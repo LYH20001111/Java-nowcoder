@@ -1,5 +1,6 @@
 package nowcoder;
 
+import java.math.BigInteger;
 import java.util.*;
 
 public class HuaWei {
@@ -276,10 +277,168 @@ public class HuaWei {
         System.out.print(num);
     }
 
+    /**
+     * 不要三句号的歪
+     */
+    private void HJ54(){
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        String[] arrays = input.split(",");
+        System.out.print(Long.valueOf(arrays[3]) - Long.valueOf(arrays[1]) - 1);
+    }
 
+    /**
+     *  挑7
+     */
+    private void HJ55(){
+        Scanner in = new Scanner(System.in);
+        int count = 0;
+        int num = in.nextInt();
+        for(int i = 1; i <= num; i++){
+            if(String.valueOf(i).contains("7") || (i % 7 == 0)){
+                count++;
+            }
+        }
+        System.out.print(count);
+    }
 
+    /**
+     * 完全数计算
+     */
+    private void HJ56(){
+        Scanner in = new Scanner(System.in);
+        int num = in.nextInt();
+        int count = 0;
+        int sum = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i = 2; i <= num; i++){
+            for(int j = 1; j <= i; j++){
+                if(i % j == 0){
+                    list.add(j);
+                }
+            }
+            for(Integer zhengshu : list){
+                sum += zhengshu;
+            }
+            if(sum == (2 * i)){
+                count++;
+            }
+            list = new ArrayList<>();
+            sum = 0;
+        }
+        System.out.print(count);
+    }
 
+    /**
+     * 高精度整数加法
+     */
+    //注意：import java.math.BigInteger;
+    public void HJ57(){
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+        while (in.hasNextBigInteger()) { // 注意 while 处理多个 case
+            BigInteger a = in.nextBigInteger();
+            BigInteger b = in.nextBigInteger();
+            System.out.println(a.add(b));
+        }
+    }
 
+    /**
+     * 输入n个整数，输出其中最小的k个
+     */
+    private void HJ58(){
+        Scanner in = new Scanner(System.in);
+        LinkedList<Integer> list = new LinkedList<>();
+        int n = in.nextInt();
+        int k = in.nextInt();
+        for (int i = 0; i < n; i++){
+            list.add(in.nextInt());
+        }
+        Collections.sort(list);
+        for(int i = 0; i < k; i++){
+            System.out.print(list.get(i) + " ");
+        }
+    }
+
+    /**
+     * 找出字符串中第一个只出现一次的字符
+     */
+    public void HJ59(){
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        int count = 0;
+        for(int i = 0; i < input.length(); i++){
+            Character c = input.charAt(i);
+            for(int j = 0; j < input.length(); j++){
+                if(c == input.charAt(j)){
+                    count++;
+                }
+            }
+            if(count == 1){
+                System.out.print(c);
+                break;
+            }
+            if(i == input.length() - 1 && count != 1){
+                System.out.print(-1);
+            }
+            count = 0;
+        }
+    }
+
+    /**
+     * 字符逆序
+     */
+    private void HJ106(){
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        String reverse = new StringBuffer(input).reverse().toString();
+        System.out.print(reverse);
+    }
+
+    /**
+     * 构造A+B
+     */
+    private void HJ107(){
+        Scanner in = new Scanner(System.in);
+        int n = 0;
+        int k = 0;
+        while (in.hasNextInt()) {
+            n = in.nextInt();
+            k = in.nextInt();
+        }
+        int count = 0;
+        if(n % 2 == 0){
+            count = ((n/2 - 1)*2 + 1);
+        }else{
+            count = ((n/2)*2);
+        }
+        if(count >= k){
+            System.out.print("YES");
+        }else{
+            System.out.print("NO");
+        }
+    }
+
+    /**
+     * 求最小公倍数
+     */
+    private void HJ108(){
+        Scanner in = new Scanner(System.in);
+        int bigger = 0;
+        int a = 0;
+        int b = 0;
+        while (in.hasNextInt()) {
+            a = in.nextInt();
+            b = in.nextInt();
+        }
+        bigger = (a > b) ? a : b;
+        for(int i = bigger; i <= (a*b); i++){
+            if(i % a == 0 && i % b == 0){
+                System.out.print(i);
+                break;
+            }
+        }
+    }
 
 
 
